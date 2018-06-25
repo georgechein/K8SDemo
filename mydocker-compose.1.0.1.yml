@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  k8sdemowebv1:
+    image: tsti/k8sdemoweb:v1.0.1
+#    hostname: k8sdemoweb
+    build:
+      context: .
+      dockerfile: K8SDemoWebV101/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - K8S_DEMO_WEBAPI_IP=http://k8sdemoapi/api/v1
+    ports:
+      - "80"
+    networks:
+      default:
+        ipv4_address: 172.21.0.1
+
+  k8sdemoapi:
+    image: tsti/k8sdemoapi
+#    hostname: k8sdemoapi
+    build:
+      context: .
+      dockerfile: K8SDemoAPI/Dockerfile
+    volumes:
+      - "d:/temp:/mnt/kubeshare"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - K8S_DEMO_DB_PATH=/mnt/kubeshare/k8sdemodb.sqlite
+    ports:
+      - "80"
+    networks:
+      default:
+        ipv4_address: 172.21.0.2
+
+networks:
+  default:
+    external:
+      name: k8sdemo_nw

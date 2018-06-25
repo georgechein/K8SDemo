@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  k8sdemowebv1:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - K8S_DEMO_WEBAPI_IP=http://k8sdemoapi/api/v1
+
+  k8sdemowebv101:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - K8S_DEMO_WEBAPI_IP=http://k8sdemoapi/api/v1
+
+  k8sdemoapi:
+    volumes:
+      - "D:/tmp:/mnt/kubeshare"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - K8S_DEMO_DB_PATH=/mnt/kubeshare/k8sdemodb.sqlite

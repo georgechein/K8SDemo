@@ -1,0 +1,28 @@
+services:
+  k8sdemoapi:
+    build:
+      context: D:\projects\K8SDemo
+      dockerfile: K8SDemoAPI/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      K8S_DEMO_DB_PATH: /mnt/kubeshare/k8sdemodb.sqlite
+    image: k8sdemoapi
+    volumes:
+    - D:\tmp:/mnt/kubeshare:rw
+  k8sdemowebv1:
+    build:
+      context: D:\projects\K8SDemo
+      dockerfile: K8SDemoWebV1/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      K8S_DEMO_WEBAPI_IP: http://k8sdemoapi/api/v1
+    image: k8sdemowebv1
+  k8sdemowebv101:
+    build:
+      context: D:\projects\K8SDemo
+      dockerfile: K8SDemoWebV101/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      K8S_DEMO_WEBAPI_IP: http://k8sdemoapi/api/v1
+    image: k8sdemowebv101
+version: '3.4'

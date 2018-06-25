@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  k8sdemowebv1:
+    image: ${DOCKER_REGISTRY}k8sdemowebv1
+    build:
+      context: .
+      dockerfile: K8SDemoWebV1/Dockerfile
+
+  k8sdemowebv101:
+    image: ${DOCKER_REGISTRY}k8sdemowebv101
+    build:
+      context: .
+      dockerfile: K8SDemoWebV101/Dockerfile
+
+
+  k8sdemoapi:
+    image: ${DOCKER_REGISTRY}k8sdemoapi
+    build:
+      context: .
+      dockerfile: K8SDemoAPI/Dockerfile
+

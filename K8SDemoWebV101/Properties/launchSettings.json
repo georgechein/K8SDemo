@@ -1,0 +1,29 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:4111/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "K8S_DEMO_WEBAPI_IP": "http://localhost:6655/api/v1"
+      }
+    },
+    "K8SDemoWebV101": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "K8S_DEMO_WEBAPI_IP": "http://localhost:6655/api/v1"
+      },
+      "applicationUrl": "http://localhost:4112/"
+    }
+  }
+}
