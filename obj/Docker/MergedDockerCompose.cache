@@ -1,7 +1,7 @@
 services:
   k8sdemoapi:
     build:
-      context: D:\projects\K8SDemo
+      context: D:\projects\git\K8SDemo
       dockerfile: K8SDemoAPI/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -11,7 +11,7 @@ services:
     - D:\tmp:/mnt/kubeshare:rw
   k8sdemowebv1:
     build:
-      context: D:\projects\K8SDemo
+      context: D:\projects\git\K8SDemo
       dockerfile: K8SDemoWebV1/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -19,7 +19,7 @@ services:
     image: k8sdemowebv1
   k8sdemowebv101:
     build:
-      context: D:\projects\K8SDemo
+      context: D:\projects\git\K8SDemo
       dockerfile: K8SDemoWebV101/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development

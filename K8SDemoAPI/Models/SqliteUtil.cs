@@ -73,6 +73,13 @@ namespace K8SDemoAPI.Models
                 cn.Execute(insertSql, dataObject);
             }
         }
+        public int GetCount(string tableName)
+        {
+            using (var cn = this.GetConn())
+            {
+                return cn.Query<int>(string.Format("SELECT count(1) FROM {0}", tableName)).FirstOrDefault();
+            }
+        }
         public void ClearTable(string tableName)
         {
             using (var cn = this.GetConn())

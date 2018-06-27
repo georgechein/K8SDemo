@@ -9,7 +9,7 @@ services:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_k8sdemoapi$
     volumes:
-      - D:\projects\K8SDemo\K8SDemoAPI:/app
+      - D:\projects\git\K8SDemo\K8SDemoAPI:/app
       - C:\Users\kevin6535.lin\vsdbg\vs2017u5:/remote_debugger:ro
 #$nuget_volume_mapping_k8sdemoapi$
     entrypoint: tail -f /dev/null
@@ -27,7 +27,7 @@ services:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_k8sdemowebv1$
     volumes:
-      - D:\projects\K8SDemo\K8SDemoWebV1:/app
+      - D:\projects\git\K8SDemo\K8SDemoWebV1:/app
       - C:\Users\kevin6535.lin\vsdbg\vs2017u5:/remote_debugger:ro
 #$nuget_volume_mapping_k8sdemowebv1$
     entrypoint: tail -f /dev/null
@@ -46,7 +46,7 @@ services:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_k8sdemowebv101$
     volumes:
-      - D:\projects\K8SDemo\K8SDemoWebV101:/app
+      - D:\projects\git\K8SDemo\K8SDemoWebV101:/app
       - C:\Users\kevin6535.lin\vsdbg\vs2017u5:/remote_debugger:ro
 #$nuget_volume_mapping_k8sdemowebv101$
     entrypoint: tail -f /dev/null

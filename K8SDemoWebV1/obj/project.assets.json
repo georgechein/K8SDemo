@@ -12668,11 +12668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\K8SDemo\\K8SDemoWebV1\\K8SDemoWebV1.csproj",
+      "projectUniqueName": "D:\\projects\\git\\K8SDemo\\K8SDemoWebV1\\K8SDemoWebV1.csproj",
       "projectName": "K8SDemoWebV1",
-      "projectPath": "D:\\projects\\K8SDemo\\K8SDemoWebV1\\K8SDemoWebV1.csproj",
+      "projectPath": "D:\\projects\\git\\K8SDemo\\K8SDemoWebV1\\K8SDemoWebV1.csproj",
       "packagesPath": "C:\\Users\\kevin6535.lin\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\K8SDemo\\K8SDemoWebV1\\obj\\",
+      "outputPath": "D:\\projects\\git\\K8SDemo\\K8SDemoWebV1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
