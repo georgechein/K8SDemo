@@ -13344,11 +13344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\K8SDemo\\K8SDemoAPI\\K8SDemoAPI.csproj",
+      "projectUniqueName": "D:\\projects\\git\\K8SDemo\\K8SDemoAPI\\K8SDemoAPI.csproj",
       "projectName": "K8SDemoAPI",
-      "projectPath": "D:\\projects\\K8SDemo\\K8SDemoAPI\\K8SDemoAPI.csproj",
+      "projectPath": "D:\\projects\\git\\K8SDemo\\K8SDemoAPI\\K8SDemoAPI.csproj",
       "packagesPath": "C:\\Users\\kevin6535.lin\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\K8SDemo\\K8SDemoAPI\\obj\\",
+      "outputPath": "D:\\projects\\git\\K8SDemo\\K8SDemoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -17,7 +17,7 @@
             <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.clientIp, Status:
+                    Version:1.0.1, IP:@Model.webIp, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
@@ -28,7 +28,7 @@
             <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.clientIp, Status:
+                    Version:1.0.1, IP:@Model.webIp, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
@@ -39,7 +39,7 @@
             <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.clientIp, Status:
+                    Version:1.0.1, IP:@Model.webIp, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
@@ -78,8 +78,8 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>Client IP</th>
-                    <th>Server IP</th>
+                    <th>Web IP</th>
+                    <th>Api IP</th>
                     <th>Created On</th>
                 </tr>
             </thead>
@@ -139,7 +139,7 @@
         postLog(apiUrl);
     });
     function postLog(apiUrl) {
-        var requestLog = { clientIp: "@Model.clientIp" };
+        var requestLog = { webIp: "@Model.webIp" };
         $.ajax({
             type: "POST",
             data: JSON.stringify(requestLog),
@@ -168,8 +168,8 @@
         $.each(data, function (i, item) {
             var row = "<tr>" +
                 "<td>" + item.id + "</td>" +
-                "<td>" + item.clientIp + "</td>" +
-                "<td>" + item.serverIp + "</td>" +
+                "<td>" + item.webIp + "</td>" +
+                "<td>" + item.apiIp + "</td>" +
                 "<td>" + item.createdOn.toString("yyyy-MM-dd HH:mm:ss") + "</td>" +
                 "</tr>";
             rows += row;
@@ -179,18 +179,18 @@
     function getFakeData() {
         var rows = [{
             "id": "1",
-            "clientIp": "1.1.1.1",
-            "serverIp": "2.2.2.2",
+            "webIp": "1.1.1.1",
+            "apiIp": "2.2.2.2",
             "createdOn": new Date(2018, 1, 1, 13, 0, 0)
             }, {
             "id": "2",
-            "clientIp": "1.1.1.1",
-            "serverIp": "2.2.2.2",
+            "webIp": "1.1.1.1",
+            "apiIp": "2.2.2.2",
             "createdOn": new Date(2018, 1, 1, 13, 0, 1)
             }, {
             "id": "3",
-            "clientIp": "1.1.1.1",
-            "serverIp": "2.2.2.2",
+            "webIp": "1.1.1.1",
+            "apiIp": "2.2.2.2",
             "createdOn": new Date(2018, 1, 1, 13, 0, 2)
             }];
         return rows;

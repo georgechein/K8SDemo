@@ -32,8 +32,8 @@ namespace K8SDemoAPI.Models
             {
                 Id = string.IsNullOrEmpty(obj.Id) ? Guid.NewGuid().ToString("N") : obj.Id,
                 CreatedOn = obj.CreatedOn.HasValue ? obj.CreatedOn.Value : DateTime.Now,
-                ClientIp = obj.ClientIp,
-                ServerIp = string.IsNullOrEmpty(obj.ServerIp) ? CommonUtil.GetLocalIp() : obj.ServerIp
+                WebIp = obj.WebIp,
+                ApiIp = string.IsNullOrEmpty(obj.ApiIp) ? CommonUtil.GetLocalIp() : obj.ApiIp
             };
         }
         public RequestLog ConvertTo(RequestLogInDb obj)
@@ -42,8 +42,8 @@ namespace K8SDemoAPI.Models
             {
                 Id = obj.Id,
                 CreatedOn = obj.CreatedOn,
-                ClientIp = obj.ClientIp,
-                ServerIp = obj.ServerIp
+                WebIp = obj.WebIp,
+                ApiIp = obj.ApiIp
             };
         }
         public static string[] GetSql4CreateTables()
@@ -51,15 +51,15 @@ namespace K8SDemoAPI.Models
             return new string[] { @"
                 CREATE TABLE RequestLog (
                 Id VARCHAR(32),
-                ClientIp VARCHAR(32),
-                ServerIp VARCHAR(32),
+                WebIp VARCHAR(32),
+                ApiIp VARCHAR(32),
                 CreatedOn DATETIME, 
                 CONSTRAINT RequestLog_PK PRIMARY KEY (Id)
                 )" };
         }
         public static string GetSql4Insert()
         {
-            return "INSERT INTO RequestLog VALUES (@Id, @ClientIp, @ServerIp, @CreatedOn)";
+            return "INSERT INTO RequestLog VALUES (@Id, @WebIp, @ApiIp, @CreatedOn)";
         }
     }
     public class RequestLog
@@ -68,24 +68,24 @@ namespace K8SDemoAPI.Models
         /// <summary>
         /// Enduser IP, not web server IP
         /// </summary>
-        public string ClientIp { get; set; }
+        public string WebIp { get; set; }
         /// <summary>
         /// WebAPI Server IP, not web server IP
         /// </summary>
-        public string ServerIp { get; set; }
+        public string ApiIp { get; set; }
         public DateTime? CreatedOn { get; set; }
     }
     public class RequestLogInDb
     {
         public string Id { get; set; }
         /// <summary>
-        /// Enduser IP, not web server IP
+        /// Web server IP
         /// </summary>
-        public string ClientIp { get; set; }
+        public string WebIp { get; set; }
         /// <summary>
-        /// WebAPI Server IP, not web server IP
+        /// WebAPI Server IP
         /// </summary>
-        public string ServerIp { get; set; }
+        public string ApiIp { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

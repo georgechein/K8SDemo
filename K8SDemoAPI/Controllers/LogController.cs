@@ -33,7 +33,7 @@ namespace K8SDemoAPI.Controllers
             var result = sqliteUtil.Select<RequestLog>("RequestLog",
                                 " Id = '" + id + "'"
                                 ).FirstOrDefault();
-            return result != null ? result :　new RequestLog() { Id = "", ClientIp = "", ServerIp = "", CreatedOn = DateTime.Now } ;
+            return result != null ? result :　new RequestLog() { Id = "", WebIp = "", ApiIp = "", CreatedOn = DateTime.Now } ;
         }
         
         // POST: api/Log
@@ -45,7 +45,7 @@ namespace K8SDemoAPI.Controllers
             sqliteUtil.Insert<RequestLogInDb>(RequestLogUtil.GetSql4Insert(), new RequestLogInDb[] { entity });
         }
         
-        // PUT: api/Log/5
+        // PUT: api/v1/log/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
