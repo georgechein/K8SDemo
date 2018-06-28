@@ -49,3 +49,14 @@ docker-compose -f .\mydocker-compose.1.0.1.yml run -d --service-ports
 172.21.0.3       k8sdemoapi
 ```
 
+detectlive.sh
+- 
+此程式於linux下執行，可用來判斷 api server 是否仍提供服務。使用前請先修改檔案中的網址，並使用以下指令給予執行權限：
+```
+chmod a+x ./detectlive.sh
+```
+執行時，只需打
+```
+./detectlive.sh
+```
+若網站仍提供服務，則無任何回傳值。若有任何回傳值，均表示失敗。

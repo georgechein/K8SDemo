@@ -77,7 +77,7 @@ namespace K8SDemoAPI.Models
         {
             using (var cn = this.GetConn())
             {
-                return cn.Query<int>(string.Format("SELECT count(1) FROM {0}", tableName)).FirstOrDefault();
+                return cn.Query<int>(string.Format("SELECT count(1) FROM {0}", tableName)).First();
             }
         }
         public void ClearTable(string tableName)

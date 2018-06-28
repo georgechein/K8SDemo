@@ -5,11 +5,15 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - K8S_DEMO_WEBAPI_IP=http://k8sdemoapi/api/v1
+    ports:
+      - "81"
 
   k8sdemowebv101:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - K8S_DEMO_WEBAPI_IP=http://k8sdemoapi/api/v1
+    ports:
+      - "82"
 
   k8sdemoapi:
     volumes:
@@ -17,3 +21,5 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - K8S_DEMO_DB_PATH=/mnt/kubeshare/k8sdemodb.sqlite
+    ports:
+      - "80"

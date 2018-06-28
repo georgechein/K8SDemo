@@ -20,7 +20,7 @@ namespace K8SDemoAPI.Controllers
             {
                 var sqliteUtil = new SqliteUtil(this.GetDbPath(), RequestLogUtil.GetSql4CreateTables());
                 var result = sqliteUtil.GetCount("RequestLog");
-                if (result > 0)
+                if (result >= 0)
                     return true;
                 return false;
             }
