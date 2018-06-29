@@ -5,7 +5,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="11000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -17,10 +17,13 @@
             <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.webIp, Status:
+                    Version:1.0.1, Web IP:@Model.webIp, API IP: <span class="apiIp">x.x.x.x</span>, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
+                </p>
+                <p>
+                    <span>更新於：</span><span class="updatedOn">??:??:??</span>
                 </p>
             </div>
         </div>
@@ -28,10 +31,13 @@
             <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.webIp, Status:
+                    Version:1.0.1, Web IP:@Model.webIp, API IP: <span class="apiIp">x.x.x.x</span>, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
+                </p>
+                <p>
+                    <span>更新於：</span><span class="updatedOn">??:??:??</span>
                 </p>
             </div>
         </div>
@@ -39,10 +45,13 @@
             <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Version:1.0.1, IP:@Model.webIp, Status:
+                    Version:1.0.1, Web IP:@Model.webIp, API IP: <span class="apiIp">x.x.x.x</span>, Status:
                     <a class="btn btn-default btn-danger" href="#">
                         BAD
                     </a>
+                </p>
+                <p>
+                    <span>更新於：</span><span class="updatedOn">??:??:??</span>
                 </p>
             </div>
         </div>
@@ -133,28 +142,47 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        var apiUrl = "@Model.apiIp/log";
+        let logApiUrl = "@Model.apiIp/log";
+        let ipApiUrl = "@Model.apiIp/ip";
+        setInterval(function () {
+            getApiIp(ipApiUrl);
+        }, 2000);
         //var data = getFakeData();
         //drawTable(data);
-        postLog(apiUrl);
+        postLog(logApiUrl);
     });
-    function postLog(apiUrl) {
-        var requestLog = { webIp: "@Model.webIp" };
+    function getApiIp(ipApiUrl) {
         $.ajax({
-            type: "POST",
-            data: JSON.stringify(requestLog),
-            url: apiUrl,
+            type: "GET",
+            data: "",
+            url: ipApiUrl,
             contentType: "application/json",
-            success: function (data) { getLog(apiUrl); },
+            success: function (data) {
+                $(".apiIp").text(data[0]);
+                let today = new Date();
+                $(".updatedOn").text(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds());
+            },
             failure: function (data) { console.log(data.responseText); },
             error: function (data) { console.log(data.responseText); }
         });
     }
-    function getLog(apiUrl) {
+    function postLog(logApiUrl) {
+        let requestLog = { webIp: "@Model.webIp" };
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(requestLog),
+            url: logApiUrl,
+            contentType: "application/json",
+            success: function (data) { getLog(logApiUrl); },
+            failure: function (data) { console.log(data.responseText); },
+            error: function (data) { console.log(data.responseText); }
+        });
+    }
+    function getLog(logApiUrl) {
         $.ajax({
             type: "GET",
             data: "",
-            url: apiUrl,
+            url: logApiUrl,
             contentType: "application/json",
             success: function (data) { drawTable(data); },
             failure: function (data) { console.log(data.responseText); },
@@ -164,9 +192,9 @@
     function drawTable(data) {
         console.log(data);
         $("#tableBody").html('');
-        var rows = "";
+        let rows = "";
         $.each(data, function (i, item) {
-            var row = "<tr>" +
+            let row = "<tr>" +
                 "<td>" + item.id + "</td>" +
                 "<td>" + item.webIp + "</td>" +
                 "<td>" + item.apiIp + "</td>" +
@@ -177,7 +205,7 @@
         $('#tableBody').append(rows);
     }
     function getFakeData() {
-        var rows = [{
+        let rows = [{
             "id": "1",
             "webIp": "1.1.1.1",
             "apiIp": "2.2.2.2",
